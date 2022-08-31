@@ -1,2 +1,3 @@
 #!/bin/bash
-Readme file for shell basics
+
+echo "Readme file for shell basics"
