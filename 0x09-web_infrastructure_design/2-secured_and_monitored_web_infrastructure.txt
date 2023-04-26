@@ -1,0 +1,33 @@
+Design of a Three-Server Web Infrastructure Hosting www.foobar.com:
+
+To meet the requirements of the task, the following infrastructure is proposed:
+
+- 3 servers for high availability and load distribution
+- 1 load balancer (HAProxy) to distribute traffic among the servers
+- 1 web server (Nginx) on each server to serve the website
+- 1 application server on each server to run the application
+- 1 primary database server (MySQL) to accept writes
+- 2 replica database servers (MySQL) for high availability and read scalability
+- 3 firewalls to secure the infrastructure
+- 1 SSL certificate to serve www.foobar.com over HTTPS
+- 3 monitoring clients (data collector for Sumologic or other monitoring services) for monitoring the infrastructure
+
+The additional elements in the infrastructure are added for the following reasons:
+
+- Firewalls are added to secure the infrastructure and protect it against malicious attacks.
+- SSL certificate is added to serve encrypted traffic over HTTPS, ensuring the security and privacy of user data.
+- Monitoring is added to detect issues, identify potential problems, and take action to prevent downtime or service disruption.
+
+The load balancer is configured with a round-robin distribution algorithm. This algorithm ensures that each server is equally loaded with traffic, preventing any one server from becoming overloaded. The load-balancer is enabling an Active-Active setup, meaning that all servers are handling traffic at the same time, providing high availability and scalability.
+
+The primary database server (MySQL) accepts writes from the application server, while the replica database servers (MySQL) provide high availability and read scalability. The replica servers are kept in sync with the primary server using replication technology.
+
+The SSL certificate is terminated at the load balancer level. This setup is problematic because it requires additional processing on the load balancer, leading to performance issues.
+
+Having only one MySQL server capable of accepting writes is an issue because it creates a Single Point of Failure (SPOF). If the primary server fails, the application will not be able to write to the database, leading to service disruption.
+
+Having servers with all the same components (database, web server, and application server) might be a problem because it creates a homogeneous infrastructure that is vulnerable to common security vulnerabilities. It is recommended to have diversity in the infrastructure to minimize the impact of security threats. 
+
+The monitoring tool collects data by installing monitoring clients (data collectors) on each server, which send data to the monitoring service (Sumologic or other). The monitoring data is used to detect issues, identify potential problems, and take action to prevent downtime or service disruption. To monitor web server QPS, it is necessary to collect data on the number of requests that the web server is receiving, which can be done using a monitoring agent or a logging agent that is installed on the web server.
+
+Overall, this infrastructure meets the requirements of the task, providing a secure, highly available, and scalable environment for hosting www.foobar.com.

@@ -1,0 +1,13 @@
+For this infrastructure, we have added two additional servers, a load balancer (HAproxy), and a set of application files for the website. The web server is Nginx, and the application server will run the application code. We also have a MySQL database.
+
+We are adding the additional servers and load balancer to ensure that we have a scalable and fault-tolerant infrastructure. By adding multiple servers, we can handle more traffic and avoid a single point of failure. The load balancer distributes the incoming traffic between the web servers, ensuring that no one server is overwhelmed with too much traffic.
+
+The load balancer is configured with a round-robin distribution algorithm, which means that incoming requests are distributed evenly between the available servers. This ensures that all servers receive a similar amount of traffic.
+
+The load balancer is enabling an Active-Active setup, which means that all servers are active and can handle incoming traffic. This is different from an Active-Passive setup, where one server is active and the other(s) are in standby mode, ready to take over if the active server fails.
+
+The MySQL database is set up as a Primary-Replica (Master-Slave) cluster. The Primary node is the main database server that handles write requests and updates the data. The Replica node(s) are secondary database servers that replicate the data from the Primary node and handle read requests. This setup ensures that we have a fault-tolerant database and can handle more read requests.
+
+The Primary node is responsible for handling write requests and updates to the data, while the Replica node(s) handle read requests. The application code will communicate with the Primary node to make updates to the data, and the Replica node(s) will be used for reading data.
+
+One issue with this infrastructure is that there may still be a single point of failure if the load balancer goes down. Additionally, there are security issues to consider, such as the lack of a firewall and HTTPS encryption. Finally, there is no monitoring in place to detect and address any issues that may arise.

@@ -1,0 +1,15 @@
+Adding one server allows dor better fault tolerance and scalability. With three
+servers, the load can be better distributed to increase redundancy.
+
+The extra load-balancer (HAproxy) configured as a cluster with the other one
+provides high availability and fault tolerance: if one HAproxy is down, the
+other one takes over, thus the website stays online; cancelling the supposed
+Single point of failure (SPOF).
+
+Splitting the components (web servers, application server, and database) with
+their own servers allows optimal use of each. DB server can be optinized for
+better storage and retrieval of data, application server for running code more
+efficiently, and web servers for running web pages faster.
+
+Overall, this configuration improves scalability, fault tolerance, and
+component optimization.

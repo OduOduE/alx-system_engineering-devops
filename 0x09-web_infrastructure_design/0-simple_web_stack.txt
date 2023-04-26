@@ -1,0 +1,18 @@
+When a one server web infrastructure that hosts the website that is reachable
+via www.foobar.com
+
+Let's start with a user who wants to access your website, www.foobar.com. To access the website, the user types www.foobar.com into their web browser.
+
+The first thing that happens is that the domain name, www.foobar.com, is resolved into an IP address. This is done through the domain name system (DNS), which maps domain names to IP addresses. In this case, the www record in the DNS is used to point to the IP address of the server that hosts the website, which is 8.8.8.8.
+
+The server is a physical or virtual machine that provides services or resources to other computers or devices on a network. In this case, the server is hosting the website, and it is responsible for serving web pages to users who request them.
+
+The web server, in this case Nginx, is the software that handles the HTTP requests and responses between the user's web browser and the application server. It receives the request from the user's web browser, and it forwards the request to the application server, which generates the dynamic content for the web page.
+
+The application server runs the application code, which generates the dynamic content for the web page. In this case, it is running the code base for the website. It interacts with the database to retrieve or update data as needed to generate the web page.
+
+The database, in this case MySQL, is used to store and retrieve data for the website. It is used by the application server to store and retrieve data as needed to generate the web page.
+
+When the user's web browser requests a web page, the web server communicates with the user's computer using the HTTP protocol. The web server sends the HTTP response back to the user's computer, which displays the web page in the web browser.
+
+One issue with this infrastructure is that it has a single point of failure (SPOF). If the server goes down, the website will be unavailable until the server is brought back up. Another issue is that there may be downtime when maintenance is needed, such as when deploying new code and restarting the web server. Additionally, this infrastructure may not be able to scale if there is too much incoming traffic, as the single server may not be able to handle the load.
